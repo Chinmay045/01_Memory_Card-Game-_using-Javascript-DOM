@@ -18,6 +18,7 @@ body {
     margin: auto;
     margin-bottom: 2rem;
     margin-top: 0.4rem;
+    perspective: 1000px;
 }
 
 .memory-card :active{
@@ -31,6 +32,12 @@ body {
     height: 33.333%;
     transform: scale(1);
     position: relative;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+.front-face{
+    transform: rotateY(180deg);
 }
 
 .memory-card.flip{
@@ -45,5 +52,7 @@ body {
     position: absolute;
     border-radius: 5px;
     background: #1c7ccc;
+    backface-visibility: hidden;
+
     /* border: 2px solid deeppink; */
 }
