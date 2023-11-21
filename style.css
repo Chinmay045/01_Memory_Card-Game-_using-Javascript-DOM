@@ -6,21 +6,31 @@
 
 body {
     height: 100vh;
+    display: flex;
     background: #060AB2;
 }
 
 .memory-game {
     width: 640px;
-    height: 640px;
+    height: 540px;
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid lime;
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-top: 0.4rem;
+}
+
+.memory-card :active{
+    transform: scale(.97);
+    transition: transform .2s;
 }
 
 .memory-card {
+    margin: 2px;
     width: 25%;
     height: 33.333%;
-    border: 2px solid yellow;
+    transform: scale(1);
+    position: relative;
 }
 
 .front-face,
