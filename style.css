@@ -22,6 +22,12 @@ body {
     width: 25%;
     height: 33.333%;
     margin: 5px;
+    transform:scale(1);
+}
+
+.memory-card:active{
+    transform: scale(.97);
+    transition: transform .2s;
 }
 
 .front-face,
