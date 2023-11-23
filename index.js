@@ -7,48 +7,58 @@ let lockBoard = false;
 
 
 function flipCard() {
-    if(lockBoard) return;
+    if (lockBoard) return;
+    if (this === firstCard) return;
     this.classList.toggle("flip");
     if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = this;
         return
         // console.log({ hasFlippedCard, firstCard });
-    } 
-        hasFlippedCard = false;
-        secondCard = this;
+    }
+    hasFlippedCard = false;
+    secondCard = this;
 
-        checkForMatch();
-        // console.log({ firstCard, secondCard });
+    checkForMatch();
+    // console.log({ firstCard, secondCard });
+}
+
+// console.log(firstCard.dataset.framework);
+// console.log(secondCard.dataset.framework);
+
+function checkForMatch() {
+    if (firstCard.dataset.framework === secondCard.dataset.framework) {
+        disableCards();
+    } else {
+        unflipCards();
     }
 
-    // console.log(firstCard.dataset.framework);
-    // console.log(secondCard.dataset.framework);
+    console.log("Function Executed");
+}
 
-    function checkForMatch() {
-        if (firstCard.dataset.framework === secondCard.dataset.framework) {
-            disableCards();
-        } else {
-            unflipCards();
-        }
+function disableCards() {
+    firstCard.removeEventListener("click", flipCard);
+    secondCard.removeEventListener("click", flipCard);
+}
 
-        console.log("Function Executed");
-    }
+function unflipCards() {
+    lockBoard = true;
+    setTimeout(() => {
+        firstCard.classList.remove("flip")
+        secondCard.classList.remove("flip")
+        lockBoard = false;
+    }, 1500);
+}
+function resetBoard() {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
 
-    function disableCards() {
-        firstCard.removeEventListener("click", flipCard);
-        secondCard.removeEventListener("click", flipCard);
-    }
-
-    function unflipCards() {
-        lockBoard = true;
-        setTimeout(() => {
-            firstCard.classList.remove("flip")
-            secondCard.classList.remove("flip")
-            lockBoard = false;
-        }, 1500);
-    }
-
-
+(function shuffle() {
+    cards.forEach(card => {
+        let randomPosition = Math.floor(random() * 12)
+        card.style.order = randomPosition;
+    });
+}) ();
 
 cards.forEach(card => card.addEventListener("click", flipCard))
