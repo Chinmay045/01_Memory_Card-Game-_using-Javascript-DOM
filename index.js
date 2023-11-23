@@ -10,12 +10,15 @@ function flipCard() {
     if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = this;
-        console.log({ hasFlippedCard, firstCard });
+        // console.log({ hasFlippedCard, firstCard });
     } else {
         hasFlippedCard = false;
         secondCard = this;
 
-        console.log({ hasFlippedCard, secondCard });
+        // console.log({ firstCard, secondCard });
     }
+    console.log(firstCard.dataset.framework);
+    console.log(secondCard.dataset.framework);
+
 }
 cards.forEach(card => card.addEventListener("click", flipCard))
