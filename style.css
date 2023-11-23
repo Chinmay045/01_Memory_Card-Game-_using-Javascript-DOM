@@ -22,10 +22,14 @@ body {
     width: 25%;
     height: 33.333%;
     margin: 5px;
-    transform:scale(1);
+    transform: scale(1);
 }
 
-.memory-card:active{
+.memory-card.flip {
+    transform: rotatey(180deg);
+}
+
+.memory-card:active {
     transform: scale(.97);
     transition: transform .2s;
 }
