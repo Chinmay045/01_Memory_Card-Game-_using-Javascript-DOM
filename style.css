@@ -4,8 +4,32 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
     background: #060Ab2;
 }
 
+.memory-game {
+    width: 640px;
+    height: 640px;
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.memory-card {
+    position: relative;
+    width: 25%;
+    height: 33.333%;
+    margin: 5px;
+}
+
+.front-face,
+.back-face {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    background: #1c7ccc;
+}
