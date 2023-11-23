@@ -13,8 +13,14 @@ function flipCard() {
         hasFlippedCard = false;
         secondCard = this;
     }
+    // console.log(hasFlippedCard);
+    // console.log(firstCard.dataset.framework);
+    // console.log(secondCard.dataset.framework)
+    if (firstCard.dataset.framework === secondCard.dataset.framework) {
 
-    console.log( firstCard,secondCard);
+        firstCard.removeEventListener("click", flipCard);
+        secondCard.removeEventListener("click", flipCard)
+    }
 }
 
 
